@@ -89,4 +89,4 @@ CMD sh -c '\
   node openclaw.mjs config set channels.telegram.allowFrom "[\"1924132251\"]" && \
   node openclaw.mjs config set channels.telegram.groupPolicy "open" && \
   rm -rf /root/.openclaw/agents && \
-  NODE_OPTIONS="--max-old-space-size=6144" node openclaw.mjs gateway --allow-unconfigured'
+  NODE_OPTIONS="--max-old-space-size=6144" node openclaw.mjs gateway --allow-unconfigured --model google-gemini-cli'
