@@ -84,7 +84,10 @@ USER root
 CMD sh -c '\
   if [ -n "$GEMINI_CONFIG_JSON" ]; then \
     mkdir -p /root/.gemini && \
-    echo "$GEMINI_CONFIG_JSON" > /root/.gemini/oauth_creds.json && \
-    echo "Gemini CLI OAuth credentials initialized."; \
+    echo "$GEMINI_CONFIG_JSON" > /root/.gemini/oauth_creds.json; \
+  fi && \
+  if [ -n "$MY_PAIRING_CODE" ]; then \
+    echo "Approving Telegram pairing code: $MY_PAIRING_CODE" && \
+    node openclaw.mjs pairing approve telegram "$MY_PAIRING_CODE" || true; \
   fi && \
   NODE_OPTIONS="--max-old-space-size=6144" node openclaw.mjs gateway --allow-unconfigured'
