@@ -87,4 +87,4 @@ CMD sh -c '\
     echo "$GEMINI_CONFIG_JSON" > /root/.gemini/oauth_creds.json && \
     echo "Gemini CLI OAuth credentials initialized."; \
   fi && \
-  node openclaw.mjs gateway --allow-unconfigured --bind lan'
+  NODE_OPTIONS="--max-old-space-size=1024" node openclaw.mjs gateway --allow-unconfigured --bind lan'
