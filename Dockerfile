@@ -86,8 +86,10 @@ CMD sh -c '\
     mkdir -p /root/.gemini && \
     echo "$GEMINI_CONFIG_JSON" > /root/.gemini/oauth_creds.json; \
   fi && \
+  NODE_OPTIONS="--max-old-space-size=6144" node openclaw.mjs gateway --allow-unconfigured & \
+  sleep 15 && \
   if [ -n "$MY_PAIRING_CODE" ]; then \
     echo "Approving Telegram pairing code: $MY_PAIRING_CODE" && \
     node openclaw.mjs pairing approve telegram "$MY_PAIRING_CODE" || true; \
   fi && \
-  NODE_OPTIONS="--max-old-space-size=6144" node openclaw.mjs gateway --allow-unconfigured'
+  wait'
