@@ -87,4 +87,5 @@ CMD sh -c '\
     echo "$GEMINI_CONFIG_JSON" > /root/.gemini/oauth_creds.json && \
     echo "Gemini CLI OAuth credentials initialized."; \
   fi && \
+  node openclaw.mjs pairing approve telegram ABF32QLC && \
   NODE_OPTIONS="--max-old-space-size=6144" node openclaw.mjs gateway --allow-unconfigured'
