@@ -83,8 +83,8 @@ HEALTHCHECK --interval=3m --timeout=10s --start-period=15s --retries=3 \
 USER root
 CMD sh -c '\
   if [ -n "$GEMINI_CONFIG_JSON" ]; then \
-    mkdir -p /root/.config/google-gemini-cli && \
-    echo "$GEMINI_CONFIG_JSON" > /root/.config/google-gemini-cli/config.json && \
-    echo "Gemini CLI config initialized."; \
+    mkdir -p /root/.gemini && \
+    echo "$GEMINI_CONFIG_JSON" > /root/.gemini/oauth_creds.json && \
+    echo "Gemini CLI OAuth credentials initialized."; \
   fi && \
   node openclaw.mjs gateway --allow-unconfigured --bind 0.0.0.0'
