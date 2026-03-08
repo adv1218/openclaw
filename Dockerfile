@@ -84,9 +84,9 @@ USER root
 CMD sh -c '\
   if [ -n "$GEMINI_CONFIG_JSON" ]; then \
     mkdir -p /root/.gemini && \
-    echo "$GEMINI_CONFIG_JSON" > /root/.gemini/oauth_creds.json; \
+    echo "$GEMINI_CONFIG_JSON" > /root/.gemini/oauth_creds.json && \
+    echo "CLI OAuth configured."; \
   fi && \
   node openclaw.mjs config set channels.telegram.allowFrom "[\"1924132251\"]" && \
   node openclaw.mjs config set channels.telegram.groupPolicy "open" && \
-  rm -rf /root/.openclaw/agents && \
   NODE_OPTIONS="--max-old-space-size=6144" node openclaw.mjs gateway --allow-unconfigured'
